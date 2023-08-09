@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -16,6 +17,11 @@ public class Rock {
     @Id
     private String id;
     private String name;
-    private String weight;
+    private String location;
+    private Integer weight;
     private Integer price;
+    private Integer width;
+    private Integer length;
+    private Integer height;
+    private String imagePath;
 }
