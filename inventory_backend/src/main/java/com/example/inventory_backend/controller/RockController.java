@@ -18,11 +18,6 @@ public class RockController {
 
     @PostMapping("/create")
     public Rock create(@RequestBody Rock rock){
-//        if (rock.getHeight() == null) {
-//            throw new ResourceNotFoundException(
-//                    "height must have an input val"
-//            );
-//        }
         return rockRepository.save(rock);
     }
 
@@ -44,5 +39,10 @@ public class RockController {
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable String id){
         rockRepository.deleteById(id);
+    }
+
+    @DeleteMapping("/deleteAll")
+    public void deleteAll() {
+        rockRepository.deleteAll();
     }
 }

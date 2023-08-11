@@ -55,4 +55,9 @@ public class RockNameController {
     public void deleteById(@PathVariable String id){
         rockNameRepository.deleteById(id);
     }
+
+    @DeleteMapping("/deleteAll")
+    public void deleteAll() {
+        rockNameRepository.deleteAll();
+    }
 }
