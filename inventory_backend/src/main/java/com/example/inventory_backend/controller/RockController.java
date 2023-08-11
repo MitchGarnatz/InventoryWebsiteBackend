@@ -18,6 +18,11 @@ public class RockController {
 
     @PostMapping("/create")
     public Rock create(@RequestBody Rock rock){
+//        if (rock.getHeight() == null) {
+//            throw new ResourceNotFoundException(
+//                    "height must have an input val"
+//            );
+//        }
         return rockRepository.save(rock);
     }
 

@@ -11,16 +11,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Document(collection = "Rock")
-public class Rock {
+@Document(collection = "RockName")
+public class RockName {
     @Id
     private String id;
     private String name;
-    private String location;
-    private Integer weight;
-    private Integer price;
-    private Integer width;
-    private Integer length;
-    private Integer height;
-    private String imagePath;
 }
