@@ -5,9 +5,7 @@ import com.example.inventory_backend.repository.RockNameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin
@@ -27,18 +25,16 @@ public class RockNameController {
         return rockNameRepository.findAll();
     }
 
-    @GetMapping("/all-names")
+    @GetMapping("/unique-names")
     public List<String> getAllUniqueNames() {
-        ArrayList<String> result = new ArrayList<>();
-        List<RockName> rockObjects;
-
-        rockObjects = rockNameRepository.findAll();
+        Set<String> uniqueNames = new TreeSet<>();
+        List<RockName> rockObjects = rockNameRepository.findAll();
 
         for (RockName rockObject : rockObjects) {
-            result.add(rockObject.getName());
+            uniqueNames.add(rockObject.getName());
         }
 
-        return result;
+        return new ArrayList<>(uniqueNames);
     }
 
     @GetMapping("/{id}")

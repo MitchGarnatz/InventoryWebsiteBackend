@@ -5,8 +5,10 @@ import com.example.inventory_backend.repository.RockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -23,7 +25,11 @@ public class RockController {
 
     @GetMapping("/all")
     public List<Rock> getAllRocks() {
-        return rockRepository.findAll();
+        List<Rock> rockList = rockRepository.findAll();
+
+        return rockList.stream()
+                .sorted(Comparator.comparing(r -> r.getName().toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
