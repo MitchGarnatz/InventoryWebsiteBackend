@@ -32,6 +32,24 @@ public class RockController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/all/sortByPrice")
+    public List<Rock> getAllRocksSortedByPrice() {
+        List<Rock> rockList = this.getAllRocks();
+
+        return rockList.stream()
+                .sorted(Comparator.comparingDouble(Rock::getPrice))
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/all/sortByPriceDesc")
+    public List<Rock> getAllRocksSortedByPriceDesc() {
+        List<Rock> rockList = this.getAllRocks();
+
+        return rockList.stream()
+                .sorted(Comparator.comparingDouble(Rock::getPrice).reversed())
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("/{id}")
     public Optional<Rock> findById(@PathVariable String id) {
         return rockRepository.findById(id);
@@ -51,4 +69,6 @@ public class RockController {
     public void deleteAll() {
         rockRepository.deleteAll();
     }
+
+
 }
